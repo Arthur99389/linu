@@ -1,4 +1,5 @@
 import subprocess
+import zlib
 
 
 def checkout(cmd, text):
@@ -7,3 +8,8 @@ def checkout(cmd, text):
         return True
     else:
         return False
+
+
+def crc32(b, s):
+    h_crc = zlib.crc32(b'path_arch')
+    return h_crc
