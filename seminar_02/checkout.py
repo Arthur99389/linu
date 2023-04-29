@@ -1,5 +1,5 @@
 import subprocess
-import zlib
+from zlib import crc32
 
 
 def checkout(cmd, text):
@@ -10,6 +10,6 @@ def checkout(cmd, text):
         return False
 
 
-def crc32(b, s):
-    h_crc = zlib.crc32(b'path_arch')
-    return h_crc
+def calc_crc32(data, value):
+    hash_crc = crc32(b'path_arch')
+    return hash_crc

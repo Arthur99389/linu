@@ -1,5 +1,5 @@
 from checkout import checkout
-from checkout import crc32
+from checkout import calc_crc32
 
 path_dir = '/home/user/tst'
 path_arx = '/home/user/arx1'
@@ -32,11 +32,8 @@ def test_step5():
 
 def test_step6(data=None):
     # test6
-    if crc32(data, 'h_crc') == checkout(f'7z h {path_arx}', "Everything is OK"):
-        return True
-    else:
-        return False
-#
+    assert calc_crc32(data, 'hash_crc') == checkout(f'7z h {path_arx}', "Everything is OK"), "Test6 FAIL"
+
 # def test_example():
 #     # test example echo "hello"
 #     assert checkout("echo 'hello'", "hello"), "Test2 FAIL"
